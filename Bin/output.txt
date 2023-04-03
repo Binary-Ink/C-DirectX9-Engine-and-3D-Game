@@ -1,0 +1,146 @@
+WinMain running
+Checking Paramaters
+Calling game_preload
+Initialising engine
+Screen Size: 1600, 900
+Creating program window
+Creating Direct3D Object
+Creating Direct3D Device
+Hardware vertext processing
+Creating 2D Renderer
+Init input system
+Calling game_init(00282CD8)
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine::addEntity: received new entity
+Engine init succeeded
+Core timer started: 0
+Entering while loop
+Exiting while loop
+Total run time: 2504
+Freeing game resources
+Shutting down engine
