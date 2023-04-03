@@ -1,0 +1,121 @@
+#include "Engine.h" 
+
+using namespace std;
+
+using namespace Batman;
+
+Matrix matworid;
+Font* font = NULL;
+Camera* camera = NULL; 
+Effect* effect = NULL;
+Mesh* mesh;
+
+float objectAngle =0;
+float deltaTime = 0;
+
+bool game_preload() {
+	g_engine->setAppTitle("Ambient Textured Shader Demo");
+	g_engine->setScreen(800, 600, 32, false);
+	return true;
+}
+
+bool game_init(HWND hwnd) {
+
+	font = new Font("Arial Bold", 18);
+	if (!font)
+	{
+		debug << "Error creating font" << endl;
+		return false;
+	}
+		//create a camera 
+		camera = new Camera();
+		camera->setPosition(0, 2.0, 10.0);
+		camera->setTarget(0, 0, 0);
+
+		//load the ambient.fx effect 
+		effect = new Effect();
+		if (!effect->Load("ambient_textured.fx"))
+		{
+			MessageBox(hwnd, "Error loading ambient_textured.fx", "Error", 0);
+			return false;
+		}
+
+		//create mesh 
+		mesh = new Mesh();
+		mesh->Load("crate_text.x");
+		mesh->setScale(0.01f);
+		mesh->setRotation(0, -90, 0);
+		return true;
+	}
+
+
+void game_render3d() {
+		effect->setTechnique("Ambient Textured"); 
+		effect->setViewMatrix(camera->getViewMatrix(), "View");
+		effect->setProjectionMatrix(camera->getProjMatrix(), "Projection"); 
+		effect->setWorldMatrix((D3DXMATRIX)mesh->getMatrix(), "World"); 
+		mesh->Render(effect);
+	}
+
+void game_end() { 
+	if (font) delete font;
+	if (effect) delete effect;
+	if (camera) delete camera; 
+	mesh-> ~Mesh(); }
+
+void game_update(float dltTime) {
+		deltaTime = dltTime;
+
+		camera->Update(); 
+		mesh->Transform();}
+	
+void game_render2d() {
+	std::ostringstream out;
+	out.setf(ios::fixed);
+	out << setprecision(4);
+
+	out << "Delta time = " << deltaTime;
+	font->Print(0, 0, out.str());
+
+	out.str("");
+	out << "Update = " << g_engine->getCoreFrameRate() << " fps";
+	font->Print(0, 20, out.str());
+
+	out.str("");
+	out << "Draw = " << g_engine->getScreenFrameRate() << " fps";
+	font->Print(0, 40, out.str());
+
+	int w = g_engine->getScreenWidth();
+	font->Print(w - 200, 20, "up/down : mesh angle");
+}
+
+void game_event(IEvent* e)
+{
+	switch (e->getID())
+		{
+		case EVENT_KEYPRESS:
+		{
+			KeyPressEvent* evt = (KeyPressEvent*)e;
+			switch (evt->keycode)
+			{
+			case DIK_ESCAPE: g_engine->Shutdown(); break;
+
+				//up/down arrow keys rotate the mesh 
+			case DIK_UP: objectAngle -= 0.02f; break;
+			case DIK_DOWN: objectAngle += 0.02f; break;
+			}
+			break;
+		}
+
+		case EVENT_MOUSEMOTION: {
+			MouseMotionEvent* evt = (MouseMotionEvent*)e;
+			camera->Look(evt->deltax / 100.0f, evt->deltay / 100.0f, 0);
+			break;
+		}
+		case EVENT_MOUSEWHEEL: {
+			MouseWheelEvent* evt = (MouseWheelEvent*)e;
+			camera->Move(0, 0, (float)(-evt->wheel / 200.0f));
+			break;
+			}
+		}
+	}

@@ -1,0 +1,112 @@
+#include "Engine.h" 
+
+using namespace Batman;
+
+using namespace std;
+
+//game objects 
+Font* font = NULL;
+Effect* effect = NULL;
+Skybox* skybox = NULL;
+Camera* camera = NULL;
+
+Matrix matWorld;
+Vector3 mouseRotate;
+D3DXVECTOR3 focus;
+
+void game_end() {
+	if (camera) delete camera;
+	if (effect) delete effect;
+	if (skybox) delete skybox;
+	if (font) delete font;
+}
+
+bool game_preload() {
+	g_engine->setAppTitle("Mountain Skybox Demo");
+	g_engine->setScreen(1024, 768, 32, false);
+	g_engine->setBackdropColor(D3DCOLOR_XRGB(10, 10, 20));
+	return true;
+}
+
+bool game_init(HWND hwnd) {
+	//create a font 
+	font = new Font("Arial", 14);
+	//create the skybox camera 
+	camera = new Camera();
+	//create effect object 
+	effect = new Effect();
+	if (!effect->Load("skybox.fx")) {
+		debug << "Error loading effect\n";
+		return false;
+	}
+
+	//create a skybox 
+	skybox = new Skybox();
+	if (!skybox->Create("mtns.jpg")) {
+		debug << "Error creating skybox\n"; return false;
+	}
+
+	matWorld.setIdentity();
+	mouseRotate = Vector3(0, 0, 0);
+	return true;
+}
+
+void game_render3d() {
+	//calculate normalized lookat vector for the skybox 
+	D3DXMATRIX r;
+	D3DXMatrixRotationYawPitchRoll(&r, mouseRotate.y, mouseRotate.x, mouseRotate.z);
+	focus = D3DXVECTOR3(1.0f, 0.0f, 0.0f); D3DXVec3TransformNormal(&focus, &focus, &r);
+	D3DXVec3Normalize(&focus, &focus);
+
+	//set camera perspective to render skybox 
+	camera->setPosition(0, 0, 0);
+	camera->setTarget(focus.x, focus.y, focus.z);
+	camera->setPerspective(Batman::PI * 0.4f, 1.33333f, 0.01f, 10000.0f);
+	camera->Update();
+
+	//send transforms to shader 
+	matWorld.setIdentity();
+	effect->setWorldMatrix(matWorld);
+	effect->setViewMatrix(camera->getViewMatrix());
+	effect->setProjectionMatrix(camera->getProjMatrix());
+
+	//render the skybox 
+	effect->Begin();
+	skybox->Render();
+	effect->End();
+
+	//restore normal camera perspective 
+	camera->setPerspective(Batman::PI / 4.0f, 1.33333f, 0.01f, 10000.0f);
+	camera->setPosition(0, 0, -200); camera->setTarget(0, 0, 0); camera->Update();
+}
+
+void game_update(float deltaTime) {}
+
+void game_render2d() {
+	ostringstream out;
+	out << "Core: " << g_engine->getCoreFrameRate() << endl;
+	out << "Camera: " << focus.x << "," << focus.y << "," << focus.z << endl;
+	font->Print(0, 0, out.str());
+}
+
+void game_event(IEvent* e) {
+	switch (e->getID())
+	{
+		case EVENT_KEYPRESS:
+		{
+			KeyPressEvent* evt = (KeyPressEvent*)e;
+			switch (evt->keycode)
+			{
+			case DIK_ESCAPE: g_engine->Shutdown(); break;
+			}
+			break;
+		}
+		case EVENT_MOUSEMOTION:
+		{
+			MouseMotionEvent* evt = (MouseMotionEvent*)e;
+			mouseRotate.y += (evt->deltax) *0.001f; 
+			mouseRotate.z += (evt->deltay) * 0.001f;
+			
+		}
+	}
+}

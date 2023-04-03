@@ -1,0 +1,200 @@
+#include "Engine.h"
+
+using namespace std; 
+
+using namespace Batman; 
+
+//standard D3DX stock meshes  
+LPD3DXMESH cylinder;
+LPD3DXMESH torus;
+LPD3DXMESH sphere;
+LPD3DXMESH cube; 
+LPD3DXMESH teapot;
+ 
+//Objects and pointers
+Matrix matWorld;
+Font* font=NULL; 
+Camera* camera=NULL; 
+Effect* effect=NULL; 
+
+//manipulation parameters 
+float red, green, blue, intensity = 0.0f; 
+
+float deltaTime = 0;
+
+bool game_preload() {
+	g_engine->setAppTitle("Ambient Shader Demo");
+	g_engine->setScreen(800, 600, 32, false);
+	return true;
+}
+	
+bool game_init(HWND hwnd) {
+		//font for screen output 
+		font = new Font("Arial Bold",18); 
+		if (!font) {
+			debug << "Error creating font" << endl;
+			return false;
+		}
+
+		//create a camera
+			camera = new Camera(); 
+			camera->setPosition(0, 0.0, 10.0); 
+			camera->setTarget(0,0,0); 
+
+		//load the ambient.fx effect 
+			effect = new Effect(); 
+			if (!effect->Load("ambient.fx")) {
+				MessageBox(hwnd, "Error loading ambient.fx", "Error", 0);
+				return false;
+			}
+
+		//set world matrix as identity matrix 
+		matWorld.setIdentity(); 
+
+
+		//create stock meshes using D3DX built in methods 
+		D3DXCreateTorus(g_engine->getDevice(), 2.0f, 4.0f, 20, 20, &torus, NULL); 
+		D3DXCreateTeapot(g_engine->getDevice(), &teapot, NULL); 
+		D3DXCreateSphere(g_engine->getDevice(), 2.0f, 10, 10, &sphere, NULL); 
+		D3DXCreateBox(g_engine->getDevice(), 2.0f, 2.0f, 2.0f, &cube, NULL); 
+		D3DXCreateCylinder(g_engine->getDevice(), 2.0f, 2.0f, 3.0f, 10, 10, &cylinder, NULL); 
+			return true;
+	}
+
+void game_render3d() 
+		{
+
+		//set matrices for view and projection in FX file 
+		effect->setViewMatrix(camera->getViewMatrix(), "View");
+
+		effect->setProjectionMatrix(camera->getProjMatrix(), "Projection");
+
+		//draw the cube
+		{
+		//auto-increase rotation value on x axis
+		static float rot = 0; 
+		rot += 0.01f;
+		//use matrix rotate x method 
+		matWorld.rotateX(rot);
+
+		//begin effect 
+		effect->Begin();
+		//set world matrix for effect (this translates object coords 
+		//to render coords) 
+		effect->setWorldMatrix((D3DXMATRIX)matWorld, "World");
+
+		//choose which mesh to render here 
+		//torus->DrawSubset(0);
+		//cube->Drawsubset(0); 
+		//sphere->DrawSubset(0); 
+		teapot->DrawSubset(0); 
+		//cylinder->DrawSubset(0);
+
+		//stop rendering effect 
+		effect->End(); 
+	}
+}
+
+void game_end() { 
+	//release memory 
+	if (font) delete font; 
+	if (effect) delete effect;
+	if (camera) delete camera; 
+	torus->Release(); 
+	teapot->Release();
+	cube->Release(); 
+	sphere->Release(); 
+	cylinder->Release(); 
+}
+
+void game_update(float dltTime) {
+	deltaTime = dltTime;
+	//update camera 
+	camera->Update(); 
+}
+
+void game_render2d()
+{
+	std::ostringstream out; 
+	out.setf(ios::fixed); 
+	out << setprecision(4);
+	out << "Delta time = " << deltaTime << endl; 
+	out << "Update = " << g_engine->getCoreFrameRate() << " fps" << endl; 
+	out << "Draw = " << g_engine->getScreenFrameRate() << " fps" << endl;
+	font->Print(0, 0, out.str());
+}
+
+void game_event(IEvent* e) 
+{
+	switch (e->getID())
+	{
+		case EVENT_KEYPRESS: 
+		{
+			KeyPressEvent* evt = (KeyPressEvent*)e;
+			if (evt->keycode == DIK_ESCAPE) g_engine->Shutdown();
+			if (evt->keycode == DIK_A)
+
+				//move camera positive x
+				camera->Move(10, 0, 0);
+			if (evt->keycode == DIK_D)
+				//move camera negative X 
+				camera->Move(-10, 0, 0);
+
+		if (evt->keycode == DIK_Q) 
+		{
+			//increase red (and wrap) 
+			red += 0.05;
+			if (red > 1.0f) red = 0;
+		}
+		if (evt->keycode == DIK_W) 
+		{
+			//increase green (and wrap) 
+			green += 0.05;
+			if (green > 1.0f) green = 0;
+		}
+		if (evt->keycode == DIK_E) 
+		{
+			//increase blue (and wrap) 
+			blue += 0.05;
+			if (blue > 1.0f) blue = 0;
+		}
+		if (evt->keycode == DIK_Z) 
+		{
+			//decrease red (and wrap) 
+			red -= 0.05;
+			if (red < 0) red = 1.0;
+		}
+		if (evt->keycode == DIK_X)
+		{
+			//decrease green (and wrap) 
+			green -= 0.05;
+			if (green < 0) green = 1.0;
+		}
+		if (evt->keycode == DIK_C) 
+		{
+			//decrease blue (and wrap)
+			blue -= 0.05;
+			if (blue < 0) blue = 1.0;
+		}
+
+		//update colour calue in FX file 
+		effect->setParam("AmbientColor", D3DXVECTOR4(red, green, blue, 1.0));
+		break;
+		}
+		case EVENT_MOUSEMOTION: 
+		{
+		MouseMotionEvent* evt = (MouseMotionEvent*)e;
+		//change look at vector based on mouse movement 
+		camera->Look(evt->deltax / 100.0f, evt->deltay / 100.0f, 0);
+		break;
+		}
+		case EVENT_MOUSEWHEEL: 
+		{
+		MouseWheelEvent* evt = (MouseWheelEvent*)e;
+		//move the camera's z position based on mousewheel movement 
+		camera->Move(0, 0, (float)(-evt->wheel / 200.0f));
+		break;
+		}
+	}
+}
+
