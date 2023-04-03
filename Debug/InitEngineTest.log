@@ -1,0 +1,43 @@
+﻿D:\Software\Visual Studio Enterprise\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  main.cpp
+  Unknown compiler version - please run the configure tests and report the results
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(462): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(506): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(535): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(637): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(645): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(649): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(670): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(703): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(704): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(756): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(783): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(893): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(902): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(919): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(935): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(957): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(965): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1002): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1093): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1102): warning C4018: '<': signed/unsigned mismatch
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1215): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1216): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1220): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1221): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1225): warning C4305: '=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1227): warning C4305: '=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1245): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1246): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1249): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1250): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1266): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1267): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1270): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1271): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1286): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1287): warning C4305: '-=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1290): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1291): warning C4305: '+=': truncation from 'double' to 'float'
+e:\2017 - 2018\cmp560 3d games programming\assignment 2\dx9\dx9\game builds\game 2\initenginetest\main.cpp(1309): warning C4305: '+=': truncation from 'double' to 'float'
+  InitEngineTest.vcxproj -> E:\2017 - 2018\CMP560 3D Games Programming\Assignment 2\DX9\DX9\Game Builds\Game 2\\Bin\InitEngineTest_Debug.exe
